@@ -1,0 +1,245 @@
+/* RESET + BASE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+body {
+    background: radial-gradient(circle at 30% 10%, #0a0f0a, #000000 90%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Segoe UI', 'Poppins', system-ui, -apple-system, 'Roboto', sans-serif;
+    padding: 1.5rem;
+    margin: 0;
+}
+
+/* Container principal */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 580px;
+    margin: 0 auto;
+}
+
+/* LOGO – totalmente responsiva */
+.logo {
+    width: min(220px, 45vw);
+    max-width: 260px;
+    height: auto;
+    display: block;
+    margin-bottom: 1.8rem;
+    filter: drop-shadow(0 8px 14px rgba(0,0,0,0.6));
+    transition: transform 0.2s ease;
+}
+
+/* Card da catraca */
+.catraca {
+    background: rgba(10, 10, 12, 0.92);
+    backdrop-filter: blur(1px);
+    padding: 1.8rem 1.5rem 2rem 1.5rem;
+    border-radius: 48px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 25px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(79, 139, 79, 0.2), 0 0 12px rgba(79, 139, 79, 0.3);
+    border: 1px solid #2a3a2a;
+    transition: all 0.2s;
+}
+
+/* Título */
+.catraca h2 {
+    color: #cfd8cf;
+    font-size: clamp(0.9rem, 5vw, 1.3rem);
+    text-align: center;
+    margin-bottom: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Display do CPF */
+.display-cpf {
+    background: #030303;
+    color: #9bbf9b;
+    padding: 1rem 0.5rem;
+    margin-bottom: 1.8rem;
+    text-align: center;
+    border-radius: 28px;
+    font-family: 'Courier New', 'Fira Mono', monospace;
+    font-size: clamp(1.3rem, 7vw, 2rem);
+    font-weight: 600;
+    letter-spacing: 2px;
+    border: 1px solid #2c442c;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,0.05);
+    text-shadow: 0 0 4px #4caf4c;
+    min-height: 80px;
+    word-break: break-word;
+    transition: color 0.15s, background 0.2s;
+}
+
+/* GRADE DO TECLADO */
+.teclado {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+/* BOTÕES */
+button {
+    padding: 1.2rem 0;
+    font-size: clamp(1.3rem, 6vw, 1.8rem);
+    font-weight: 600;
+    border: none;
+    border-radius: 28px;
+    background: #1e241e;
+    color: #eef2ee;
+    cursor: pointer;
+    transition: transform 0.08s linear, background 0.1s, box-shadow 0.1s;
+    box-shadow: 0 5px 0 #030303;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 1px;
+}
+
+@media (hover: hover) {
+    button:hover {
+        background: #2a352a;
+        transform: translateY(-2px);
+        box-shadow: 0 7px 0 #030303;
+    }
+}
+
+button:active {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 #030303;
+    background: #113511;
+}
+
+/* Botão ← (apagar) */
+.teclado button:nth-child(10) {
+    background: #2f2a1f;
+    color: #ffd966;
+    font-weight: bold;
+    font-size: clamp(1.2rem, 5.5vw, 1.6rem);
+}
+
+/* Botão OK */
+.teclado button:last-child {
+    background: #2b6e2b;
+    color: #f0fff0;
+    font-weight: bold;
+    text-shadow: 0 1px 0 #0a3b0a;
+    box-shadow: 0 5px 0 #0e3e0e;
+}
+
+.teclado button:last-child:active {
+    background: #0f521f;
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 #0e3e0e;
+}
+
+/* Footer */
+.footer-note {
+    margin-top: 2rem;
+    text-align: center;
+    color: #3f4d3f;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    font-weight: 400;
+}
+
+/* ========== RESPONSIVIDADE ========== */
+@media (max-width: 650px) {
+    body {
+        padding: 1rem;
+    }
+    .catraca {
+        padding: 1.4rem 1.2rem 1.8rem;
+        border-radius: 38px;
+    }
+    .teclado {
+        gap: 0.7rem;
+    }
+    button {
+        padding: 0.9rem 0;
+        border-radius: 28px;
+    }
+    .display-cpf {
+        margin-bottom: 1.4rem;
+        padding: 0.9rem 0.4rem;
+        min-height: 70px;
+    }
+}
+
+@media (max-width: 480px) {
+    .catraca {
+        padding: 1.2rem 1rem 1.5rem;
+        border-radius: 32px;
+    }
+    .teclado {
+        gap: 0.6rem;
+    }
+    button {
+        padding: 0.75rem 0;
+        border-radius: 24px;
+        font-size: 1.2rem;
+    }
+    .display-cpf {
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+    }
+    .catraca h2 {
+        margin-bottom: 0.8rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .teclado {
+        gap: 0.5rem;
+    }
+    button {
+        padding: 0.6rem 0;
+        font-size: 1rem;
+    }
+    .display-cpf {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .catraca {
+        max-width: 450px;
+    }
+    button {
+        padding: 1.4rem 0;
+        font-size: 1.7rem;
+    }
+    .logo {
+        width: 200px;
+        margin-bottom: 2rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .catraca {
+        max-width: 540px;
+    }
+    button {
+        padding: 1.3rem 0;
+    }
+}
+
+button:focus-visible {
+    outline: 3px solid #7bc97b;
+    outline-offset: 2px;
+}
