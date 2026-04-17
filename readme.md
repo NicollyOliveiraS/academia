@@ -49,6 +49,7 @@ Smartphones pequenos (360px+)
 Tablets (Modo Retrato e Paisagem)
 
 Monitores Desktop
+
 Autores:
 Nicolly Oliveira - Desenvolvedora Front-end
 Email: Nicolly.oliveira.senai@gmail.com
