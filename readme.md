@@ -50,7 +50,7 @@ Tablets (Modo Retrato e Paisagem)
 
 Monitores Desktop
 
-Autores:
+Autora:
 Nicolly Oliveira - Desenvolvedora Front-end
 Email: Nicolly.oliveira.senai@gmail.com
 
