@@ -58,6 +58,14 @@
     const teclado = document.getElementById('tecladoDinamico');
     const botoes = ["1","2","3","4","5","6","7","8","9","←","0","OK"];
     
+    // mensagem de timeout/ problema de rede sem travamento infinito
+    let timeoutId;
+    flashTimeout = () => {
+        clearTimeout(timeoutId);
+        displayElement.style.backgroundColor = "#2e1a1a";
+    };
+
+
     botoes.forEach(label => {
         const btn = document.createElement("button");
         btn.textContent = label;
