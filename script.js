@@ -31,48 +31,64 @@
     }
 
     async function enviarDados() {
-        if (cpfNumerico.length !== 11) {
-            mostrarNotificacao("Digite os 11 números do CPF.", "aviso");
-            return;
-        }
-
-        try {
-            displayElement.style.opacity = "0.5";
-            
-            const response = await fetch(`${API_BASE_URL}/consulta/${cpfNumerico}`);
-           
-            const nome = data.nome || data.aluno || data.user?.nome || "Aluno";
-
-
-
-            if (response.ok) {
-                displayElement.style.backgroundColor = "#1a2c1a";
-
-                mostrarNotificacao(`Acesso liberado! Bem-vindo(a), ${nome}!`, "sucesso");
-
-                cpfNumerico = "";
-            } else {
-                displayElement.style.backgroundColor = "#2e1a1a";
-
-                mostrarNotificacao(data.erro || "CPF não cadastrado.", "erro");
-
-                // 🔴 LIMPA CPF QUANDO NEGADO
-                cpfNumerico = "";
-            }
-        } catch (error) {
-            mostrarNotificacao("Erro de conexão com o servidor.", "erro");
-
-            // 🔴 LIMPA CPF EM ERRO TAMBÉM
-            cpfNumerico = "";
-        } finally {
-            displayElement.style.opacity = "1";
-
-            setTimeout(() => {
-                displayElement.style.backgroundColor = "";
-                atualizarDisplay();
-            }, 1000);
-        }
+    if (cpfNumerico.length !== 11) {
+        mostrarNotificacao("Digite os 11 números do CPF.", "aviso");
+        return;
     }
+
+    try {
+        displayElement.style.opacity = "0.5";
+        
+        const response = await fetch(`${API_BASE_URL}/consulta/${cpfNumerico}`);
+        const data = await response.json();
+
+        console.log("STATUS:", response.status);
+        console.log("DATA:", data);
+
+        console.log("RESPOSTA API:", data); // 👈 debug
+
+        if (response.status === 200) {
+            // ✅ acesso liberado
+            const nome = data.nome 
+
+            displayElement.style.backgroundColor = "#1a2c1a";
+
+            mostrarNotificacao(`Acesso liberado! Bem-vindo(a), ${nome}!`, "sucesso");
+
+            cpfNumerico = "";
+
+        } else if (response.status === 403) {
+            // ❌ acesso negado (status != Ativo)
+            displayElement.style.backgroundColor = "#2e1a1a";
+
+            mostrarNotificacao(data.erro || "Acesso negado.", "erro");
+
+            cpfNumerico = "";
+
+        } else if (response.status === 404) {
+            // ❌ não encontrado
+            displayElement.style.backgroundColor = "#2e1a1a";
+
+            mostrarNotificacao("CPF não cadastrado.", "erro");
+
+            cpfNumerico = "";
+        }
+
+    } catch (error) {
+        console.error(error);
+
+        mostrarNotificacao("Erro de conexão com o servidor.", "erro");
+
+        cpfNumerico = "";
+    } finally {
+        displayElement.style.opacity = "1";
+
+        setTimeout(() => {
+            displayElement.style.backgroundColor = "";
+            atualizarDisplay();
+        }, 1000);
+    }
+}
 
     // Teclado Dinâmico
     const teclado = document.getElementById('tecladoDinamico');
