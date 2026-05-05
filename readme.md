@@ -54,7 +54,12 @@ Autora:
 Nicolly Oliveira - Desenvolvedora Front-end
 Email: Nicolly.oliveira.senai@gmail.com
 
+
 Link da vercel do projeto: https://greenfit-five.vercel.app
+
+API:
+Vercel: https://academia-limpo.vercel.app/
+GitHub: https://github.com/GitAnaClaraMendes399
 
 📝 Notas de Versão
 Versão Atual: 1.0 (2026)
