@@ -110,6 +110,47 @@ button {
     justify-content: center;
     letter-spacing: 1px;
 }
+.notificacao {
+    position: fixed; /* 🔥 isso resolve */
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    background: rgba(20, 20, 20, 0.95);
+    padding: 12px 20px;
+    border-radius: 12px;
+
+    font-size: 0.9rem;
+    font-weight: 500;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+
+    z-index: 9999; /* 🔥 garante que fica na frente */
+}
+
+/* quando aparece */
+.notificacao.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(10px);
+}
+
+/* cores */
+.notificacao.sucesso {
+    color: #7CFF7C;
+    border: 1px solid #2b6e2b;
+}
+
+.notificacao.erro {
+    color: #FF6B6B;
+    border: 1px solid #6e2b2b;
+}
+
+.notificacao.aviso {
+    color: #FFD966;
+    border: 1px solid #6e5a2b;
+}
 
 @media (hover: hover) {
     button:hover {
